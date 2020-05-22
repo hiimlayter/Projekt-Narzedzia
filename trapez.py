@@ -14,18 +14,16 @@ def funkcja(wzor,x):
     return wz(x)
 
 def trapez():
-    if(inputformula.get()=="" or inputx1.get()=="" or inputx2.get()=="" or inputh.get()==""):
+    if(inputformula.get()=="" or inputx1.get()=="" or inputx2.get()=="" or inputn.get()==""):
         messagebox.showinfo("Błąd!", "Brak danych!")
     else:
         #odczyt informacji
         wzor = inputformula.get()
         x1 = float(inputx1.get())
         x2 = float(inputx2.get())
-        h = float(inputh.get())
+        n = float(inputn.get())
 
-        if(((x2*1000000)-(x1*1000000))%(h*1000000)!=0):
-            messagebox.showinfo("Błąd!", "Zakres nie jest podzielny przez krok!")
-            return 0
+        h = (x2-x1)/n
 
         suma_pola = 0
 
@@ -64,10 +62,10 @@ x2Label.pack()
 inputx2 = Entry(root, bg="#FDFDFD")
 inputx2.pack()
 
-hLabel = Label(root,text="Krok:")
-hLabel.pack()
-inputh = Entry(root, bg="#FDFDFD")
-inputh.pack()
+nLabel = Label(root,text="Ilość trapezów:")
+nLabel.pack()
+inputn = Entry(root, bg="#FDFDFD")
+inputn.pack()
 
 #Buttons
 button1 = Button(root, text="Oblicz",command=trapez)
