@@ -14,16 +14,18 @@ def funkcja(wzor,x,y):
     return wz(x,y)
 
 def eulerJawny():
-    #odczyt informacji
-    wzor = inputformula.get()
-    x = float(inputx.get())
-    x0 = float(inputx0.get())
-    y0 = float(inputy0.get())
-    h = float(inputh.get())
 
-    if(wzor=="" or x=="" or x0=="" or y0=="" or h==""):
+
+    if(inputformula.get()=="" or inputx.get()=="" or inputx0.get()=="" or inputy0.get()=="" or inputh.get()==""):
         messagebox.showinfo("Błąd!", "Brak danych!")
     else:
+        #odczyt informacji
+        wzor = inputformula.get()
+        x = float(inputx.get())
+        x0 = float(inputx0.get())
+        y0 = float(inputy0.get())
+        h = float(inputh.get())
+
         xk=x
         xk=xk-x0
         if xk%h==0 and h>0 and x>x0:
