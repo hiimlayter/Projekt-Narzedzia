@@ -40,7 +40,7 @@ def trapez():
             xstart += h
             xnext += h
 
-        messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją w na przedziale <" + str(int(x1)) + ";" + str(int(x2))+ "> =" +"%.10f" % suma_pola)
+        messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + str(int(x1)) + ";" + str(int(x2))+ "> =" +"%.10f" % suma_pola)
 
 #------GUI------
 
