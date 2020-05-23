@@ -23,24 +23,25 @@ def trapez():
         x2 = float(inputx2.get())
         n = float(inputn.get())
 
-        h = (x2-x1)/n
-
+        h = (abs(x2-x1))/n
         suma_pola = 0
-
         xstart = x1
         xnext = x1+h
 
-        while(xstart<=x2):
+        while(xstart<x2):
             #oblicz pole
             a = funkcja(wzor,xstart)
             b = funkcja(wzor,xnext)
             pole_trapezu = ((a+b)*h)/2
             suma_pola += pole_trapezu
+
             #skok do następnego trapezu
             xstart += h
+            xstart = round(xstart,6)
             xnext += h
+            xnext = round(xnext,6)
 
-        messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + str(int(x1)) + ";" + str(int(x2))+ "> =" +"%.10f" % suma_pola)
+        messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + "%.3f" % x1 + ";" + "%.3f" % x2 + "> = " +"%.10f" % suma_pola)
 
 #------GUI------
 
