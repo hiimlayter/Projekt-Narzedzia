@@ -31,8 +31,6 @@ def eulerJawny():
         xk = int(xk)
         hk=int(h*1000000)
 
-        print("xk="+str(xk)+", x0="+str(x0)+"h="+str(hk)+"xk%h="+str(xk%hk))
-
         if xk%hk==0 and h>0 and x>x0:
             try:
                 tablicaX= [x0]
