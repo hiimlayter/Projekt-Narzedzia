@@ -28,20 +28,24 @@ def trapez():
         xstart = x1
         xnext = x1+h
 
-        while(xstart<x2):
-            #oblicz pole
-            a = funkcja(wzor,xstart)
-            b = funkcja(wzor,xnext)
-            pole_trapezu = ((a+b)*h)/2
-            suma_pola += pole_trapezu
+        try:
+            while(xstart<x2):
+                #oblicz pole
+                a = funkcja(wzor,xstart)
+                b = funkcja(wzor,xnext)
+                pole_trapezu = ((a+b)*h)/2
+                suma_pola += pole_trapezu
 
-            #skok do następnego trapezu
-            xstart += h
-            xstart = round(xstart,6)
-            xnext += h
-            xnext = round(xnext,6)
+                #skok do następnego trapezu
+                xstart += h
+                xstart = round(xstart,6)
+                xnext += h
+                xnext = round(xnext,6)
 
-        messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + "%.3f" % x1 + ";" + "%.3f" % x2 + "> = " +"%.10f" % suma_pola)
+            messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + "%.3f" % x1 + ";" + "%.3f" % x2 + "> = " +"%.10f" % suma_pola)
+
+        except:
+            messagebox.showinfo("Błąd!", "Błędne dane!")
 
 #------GUI------
 

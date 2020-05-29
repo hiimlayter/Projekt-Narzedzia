@@ -26,12 +26,17 @@ def eulerJawny():
         y0 = float(inputy0.get())
         h = float(inputh.get())
 
-        xk=x
-        xk=xk-x0
-        if xk%h==0 and h>0 and x>x0:
+
+        xk=(x*1000000)-(x0*1000000)
+        xk = int(xk)
+        hk=int(h*1000000)
+
+        print("xk="+str(xk)+", x0="+str(x0)+"h="+str(hk)+"xk%h="+str(xk%hk))
+
+        if xk%hk==0 and h>0 and x>x0:
             try:
                 tablicaX= [x0]
-                while(tablicaX[-1]!=x):
+                while(tablicaX[-1]<x):
                     tablicaX.append(tablicaX[-1]+h)
                 tablicaY = [y0]
                 for i in range(1,len(tablicaX)-1):
