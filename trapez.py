@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from math import *
+from matplotlib import *
 
 root = Tk()
 root.title("Metoda trapezów")

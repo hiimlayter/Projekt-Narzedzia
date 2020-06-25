@@ -1,74 +1,86 @@
 from tkinter import *
 from tkinter import messagebox
 from math import *
+import numpy
+import scipy.optimize
 
 root = Tk()
-root.title("Euler jawny")
-root.geometry("250x250")
+root.title("Euler niejawny")
+root.geometry("470x180")
 root.resizable(width=False, height=False)
 
 #----FUNCTIONS-----
 
-def funkcja(wzor,x,y):
-    wz = lambda x,y: eval(wzor)
-    return wz(x,y)
-
-def eulerJawny():
+def eulerNiejawny():
     #odczyt informacji
-    wzor = inputformula.get()
-    x = float(inputx.get())
-    x0 = float(inputx0.get())
-    y0 = float(inputy0.get())
-    h = float(inputh.get())
-
-    if(wzor=="" or x=="" or x0=="" or y0=="" or h==""):
+    if(fy1Input.get()=="" or fy2Input.get()=="" or gy1Input.get()=="" or gy2Input.get()=="" or inputy1.get()=="" or inputy2.get()=="" or inputX.get()=="" or inputKrok.get()==""):
         messagebox.showinfo("Błąd!", "Brak danych!")
     else:
-        xk=x
-        xk=xk-x0
-        if xk%h==0 and h>0 and x>x0:
-            try:
-                tablicaX= [x0]
-                while(tablicaX[-1]!=x):
-                    tablicaX.append(tablicaX[-1]+h)
-                tablicaY = [y0]
-                for i in range(1,len(tablicaX)-1):
-                    tablicaY.append(tablicaY[-1]+h*funkcja(wzor,tablicaX[i],tablicaY[-1]))
-                messagebox.showinfo("Wynik", "Wynik to Y="+str(round((tablicaY[-1]),8)))
-            except:
-                messagebox.showinfo("Błąd!", "Błędne dane! Niepoprawny zapis funkcji!")
-        else:
-            messagebox.showinfo("Błąd!", "Błędne dane! Krok nigdy nie dotrze do oczekiwanego X'sa!")
+        y1 = float(inputy1.get())
+        y2 = float(inputy2.get())
+        krok = float(inputKrok.get())
+        fy1 = float(fy1Input.get())
+        fy2 = float(fy2Input.get())
+        gy1 = float(gy1Input.get())
+        gy2 = float(gy2Input.get())
+        wf = float(wfInput.get())
+        wg = float(wgInput.get())
+
+        A = numpy.array([[(fy1-1),fy2],[gy1,(gy2-1)]])
+        B = numpy.array([y1-wf,y2-wg])
+        Z = numpy.linalg.solve(A,B)*-1
+        messagebox.showinfo("Wynik", "Wynik to:\nY1="+str(round((Z[0]),8))+"\nY2="+str(round((Z[1]),8)))
+        #messagebox.showinfo("Błąd!", "Błędne dane!")
 
 #------GUI------
+Label(root,text="f = ").grid(row=0,column=0)
+fy1Input = Entry(root,bg="#FDFDFD")
+fy1Input.insert(END,'1')
+fy1Input.grid(row=0,column=1)
+Label(root,text="y1+ ").grid(row=0,column=2)
+fy2Input = Entry(root,bg="#FDFDFD")
+fy2Input.insert(END,'-3')
+fy2Input.grid(row=0,column=3)
+Label(root,text="y2+ ").grid(row=0,column=4)
+wfInput = Entry(root,bg="#FDFDFD")
+wfInput.insert(END,'0')
+wfInput.grid(row=0,column=5)
 
-formulaLabel = Label(root,text="Wzór:")
-formulaLabel.pack()
-inputformula = Entry(root, bg="#FDFDFD")
-inputformula.pack()
+Label(root,text="g = ").grid(row=1,column=0)
+gy1Input = Entry(root,bg="#FDFDFD")
+gy1Input.insert(END,'3')
+gy1Input.grid(row=1,column=1)
+Label(root,text="y1+ ").grid(row=1,column=2)
+gy2Input = Entry(root,bg="#FDFDFD")
+gy2Input.insert(END,'-1')
+gy2Input.grid(row=1,column=3)
+Label(root,text="y2+ ").grid(row=1,column=4)
+wgInput = Entry(root,bg="#FDFDFD")
+wgInput.insert(END,'0')
+wgInput.grid(row=1,column=5)
 
-xLabel = Label(root,text="X:")
-xLabel.pack()
-inputx = Entry(root, bg="#FDFDFD")
-inputx.pack()
+Label(root,text="y1(0):").grid(row=2,column=0)
+inputy1 = Entry(root, bg="#FDFDFD")
+inputy1.insert(END,'2')
+inputy1.grid(row=2,column=1)
 
-x0Label = Label(root,text="X0:")
-x0Label.pack()
-inputx0 = Entry(root, bg="#FDFDFD")
-inputx0.pack()
+Label(root,text="y2(0):").grid(row=3,column=0)
+inputy2 = Entry(root, bg="#FDFDFD")
+inputy2.insert(END,'1')
+inputy2.grid(row=3,column=1)
 
-y0Label = Label(root,text="Y0:")
-y0Label.pack()
-inputy0 = Entry(root, bg="#FDFDFD")
-inputy0.pack()
+Label(root,text="Krok:").grid(row=4,column=0)
+inputKrok = Entry(root, bg="#FDFDFD")
+inputKrok.insert(END,'1')
+inputKrok.grid(row=4,column=1)
 
-hLabel = Label(root,text="Krok:")
-hLabel.pack()
-inputh = Entry(root, bg="#FDFDFD")
-inputh.pack()
+Label(root,text="X:").grid(row=5,column=0)
+inputX = Entry(root, bg="#FDFDFD")
+inputX.insert(END,'1')
+inputX.grid(row=5,column=1)
 
 #Buttons
-button1 = Button(root, text="Oblicz",command=eulerJawny)
-button1.pack()
+button1 = Button(root, text="Oblicz",command=eulerNiejawny)
+button1.grid(row=6,column=3)
 
 root.mainloop()
