@@ -83,4 +83,6 @@ inputX.grid(row=5,column=1)
 button1 = Button(root, text="Oblicz",command=eulerNiejawny)
 button1.grid(row=6,column=3)
 
+messagebox.showinfo("Uwaga!", "Uwaga, program został wypełniony przykładowymi danymi, aby pokazać w jaki sposób należy wypełniać pola. \nAby lepiej zapoznać się ze sposobem działania programu należy przeczytać dokumentację.")
+
 root.mainloop()

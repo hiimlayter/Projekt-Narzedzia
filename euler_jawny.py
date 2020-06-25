@@ -47,33 +47,35 @@ def eulerJawny():
 
 #------GUI------
 
-formulaLabel = Label(root,text="Wzór:")
-formulaLabel.pack()
+Label(root,text="Wzór:").pack()
 inputformula = Entry(root, bg="#FDFDFD")
+inputformula.insert(END,'x+2*y')
 inputformula.pack()
 
-xLabel = Label(root,text="X:")
-xLabel.pack()
+Label(root,text="X:").pack()
 inputx = Entry(root, bg="#FDFDFD")
+inputx.insert(END,'0.4')
 inputx.pack()
 
-x0Label = Label(root,text="X0:")
-x0Label.pack()
+Label(root,text="X0:").pack()
 inputx0 = Entry(root, bg="#FDFDFD")
+inputx0.insert(END,'0')
 inputx0.pack()
 
-y0Label = Label(root,text="Y0:")
-y0Label.pack()
+Label(root,text="Y0:").pack()
 inputy0 = Entry(root, bg="#FDFDFD")
+inputy0.insert(END,'0')
 inputy0.pack()
 
-hLabel = Label(root,text="Krok:")
-hLabel.pack()
+Label(root,text="Krok:").pack()
 inputh = Entry(root, bg="#FDFDFD")
+inputh.insert(END,'0.1')
 inputh.pack()
 
 #Buttons
 button1 = Button(root, text="Oblicz",command=eulerJawny)
 button1.pack()
+
+messagebox.showinfo("Uwaga!", "Uwaga, program został wypełniony przykładowymi danymi, aby pokazać w jaki sposób należy wypełniać pola. \nAby lepiej zapoznać się ze sposobem działania programu należy przeczytać dokumentację.")
 
 root.mainloop()

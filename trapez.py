@@ -43,38 +43,39 @@ def trapez():
                 xnext += h
                 xnext = round(xnext,6)
 
-            messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + "%.3f" % x1 + ";" + "%.3f" % x2 + "> = " +"%.10f" % suma_pola)
+            messagebox.showinfo("Wynik", "Wynik to: \n Pole pod funkcją na przedziale <" + "%.3f" % x1 + ";" + "%.3f" % x2 + "> = " +"%.6f" % suma_pola)
 
         except:
             messagebox.showinfo("Błąd!", "Błędne dane!")
 
 #------GUI------
 
-formulaLabel = Label(root,text="Wzór:")
-formulaLabel.pack()
+Label(root,text="Wzór:").pack()
 inputformula = Entry(root, bg="#FDFDFD")
+inputformula.insert(END,'sin(x**2)+2')
 inputformula.pack()
 
-zLabel = Label(root,text="Zakres:")
-zLabel.pack()
+Label(root,text="Zakres:").pack()
 
-x1Label = Label(root,text="X1:")
-x1Label.pack()
+Label(root,text="X1:").pack()
 inputx1 = Entry(root, bg="#FDFDFD")
+inputx1.insert(END,'0')
 inputx1.pack()
 
-x2Label = Label(root,text="X2:")
-x2Label.pack()
+Label(root,text="X2:").pack()
 inputx2 = Entry(root, bg="#FDFDFD")
+inputx2.insert(END,'3')
 inputx2.pack()
 
-nLabel = Label(root,text="Ilość trapezów:")
-nLabel.pack()
+Label(root,text="Ilość trapezów:").pack()
 inputn = Entry(root, bg="#FDFDFD")
+inputn.insert(END,'20')
 inputn.pack()
 
 #Buttons
 button1 = Button(root, text="Oblicz",command=trapez)
 button1.pack()
+
+messagebox.showinfo("Uwaga!", "Uwaga, program został wypełniony przykładowymi danymi, aby pokazać w jaki sposób należy wypełniać pola. \nAby lepiej zapoznać się ze sposobem działania programu należy przeczytać dokumentację.")
 
 root.mainloop()
