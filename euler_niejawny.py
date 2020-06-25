@@ -13,24 +13,30 @@ root.resizable(width=False, height=False)
 
 def eulerNiejawny():
     #odczyt informacji
-    if(fy1Input.get()=="" or fy2Input.get()=="" or gy1Input.get()=="" or gy2Input.get()=="" or inputy1.get()=="" or inputy2.get()=="" or inputX.get()=="" or inputKrok.get()==""):
+    if(fy1Input.get()=="" or fy2Input.get()==""
+    or gy1Input.get()=="" or gy2Input.get()==""
+    or inputy1.get()=="" or inputy2.get()==""
+    or inputX.get()=="" or inputKrok.get()==""
+    or wfInput.get()=="" or wgInput.get()==""):
         messagebox.showinfo("Błąd!", "Brak danych!")
     else:
-        y1 = float(inputy1.get())
-        y2 = float(inputy2.get())
-        krok = float(inputKrok.get())
-        fy1 = float(fy1Input.get())
-        fy2 = float(fy2Input.get())
-        gy1 = float(gy1Input.get())
-        gy2 = float(gy2Input.get())
-        wf = float(wfInput.get())
-        wg = float(wgInput.get())
+        try:
+            y1 = float(inputy1.get())
+            y2 = float(inputy2.get())
+            krok = float(inputKrok.get())
+            fy1 = float(fy1Input.get())
+            fy2 = float(fy2Input.get())
+            gy1 = float(gy1Input.get())
+            gy2 = float(gy2Input.get())
+            wf = float(wfInput.get())
+            wg = float(wgInput.get())
 
-        A = numpy.array([[(fy1-1),fy2],[gy1,(gy2-1)]])
-        B = numpy.array([y1-wf,y2-wg])
-        Z = numpy.linalg.solve(A,B)*-1
-        messagebox.showinfo("Wynik", "Wynik to:\nY1="+str(round((Z[0]),8))+"\nY2="+str(round((Z[1]),8)))
-        #messagebox.showinfo("Błąd!", "Błędne dane!")
+            A = numpy.array([[(fy1-1),fy2],[gy1,(gy2-1)]])
+            B = numpy.array([y1-wf,y2-wg])
+            Z = numpy.linalg.solve(A,B)*-1
+            messagebox.showinfo("Wynik", "Wynik to:\nY1="+str(round((Z[0]),8))+"\nY2="+str(round((Z[1]),8)))
+        except:
+            messagebox.showinfo("Błąd!", "Błędne dane!")
 
 #------GUI------
 Label(root,text="f = ").grid(row=0,column=0)
